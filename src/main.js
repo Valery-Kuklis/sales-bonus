@@ -68,6 +68,9 @@ function analyzeSalesData(data, options) {
         if (!data[key] || !Array.isArray(data[key])) {
             throw new Error(`data.${key} должен быть непустым массивом`);
         }
+        if (data[key].length === 0) {
+            throw new Error(`data.${key} не может быть пустым массивом`);
+        }
     }
     
     // @TODO: Проверка наличия опций
