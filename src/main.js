@@ -72,6 +72,13 @@ function analyzeSalesData(data, options) {
             throw new Error(`data.${key} не может быть пустым массивом`);
         }
     }
+
+    if (options.calculateRevenue != null && typeof options.calculateRevenue !== 'function') {
+        throw new Error('options.calculateRevenue должен быть функцией');
+    }
+    if (options.calculateBonus != null && typeof options.calculateBonus !== 'function') {
+        throw new Error('options.calculateBonus должен быть функцией');
+    }
     
     // @TODO: Проверка наличия опций
     const calculateRevenue = options.calculateRevenue || calculateSimpleRevenue;
