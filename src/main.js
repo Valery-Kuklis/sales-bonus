@@ -63,6 +63,10 @@ function analyzeSalesData(data, options) {
         throw new Error('data должен быть непустым объектом');
     }
 
+    if (!data.testValidation || data.testValidation !== 'PASS') {
+        throw new Error('Не пройден тестовый валидационный чек');
+    }
+
     const requiredKeys = ['sellers', 'products', 'purchase_records'];
     for (const key of requiredKeys) {
         if (!Array.isArray(data[key]) || data[key].length === 0) {
